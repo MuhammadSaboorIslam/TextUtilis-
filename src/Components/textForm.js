@@ -6,6 +6,11 @@ export default function TextForm(props) {
         // console.log("uppercase was clicked");
         let newText = text.toUpperCase();
         setText(newText);
+        if (text === ""){
+            props.showAlert("Can't convert Null text" , "danger")
+        }else {
+            props.showAlert("Converted to upper case" , "success")
+        }
     }
     const handleChange = (event) => {
         //console.log("object");
@@ -14,9 +19,21 @@ export default function TextForm(props) {
     const lowercase = () =>{
         let newwText = text.toLowerCase();
         setText(newwText);
+        if (text === ""){
+            props.showAlert("Can't convert Null text" , "danger")
+        }else {
+            props.showAlert("Converted to lower case" , "success")
+        }
+        
     }
     const clear = (event) =>{
         setText("");
+        if (text === ""){
+            props.showAlert("Already Cleared :)" , "warning")
+        }else{
+            props.showAlert("Cleared" , "success")
+        }
+        
     }
     const speak = ()=>{
         let msg = new SpeechSynthesisUtterance();
@@ -37,6 +54,12 @@ export default function TextForm(props) {
             }
         }
         setText(newText)
+        if (text === ""){
+            props.showAlert("Can't convert Null text" , "danger")
+        }else{
+            props.showAlert("Converted to alternating case" , "success")
+        }
+        
     }
     const capitalize = () =>{
         let lines = text.split(".")
@@ -61,6 +84,11 @@ export default function TextForm(props) {
             
         }
         setText(newtext)
+        if (text === ""){
+            props.showAlert("Enter a text to use this" , "danger")
+        }else{
+            props.showAlert("Capatilized" , "success")
+        }
     }
     const [text, setText] = useState("");
   return (
